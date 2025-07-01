@@ -12,3 +12,17 @@
   gap:30px;
   row-gap: 50px;
 }
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  color: #808080;
+  font-size: 16px;
+  text-align: center;
+  min-height: 120px;
+}
