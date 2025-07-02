@@ -274,6 +274,9 @@
 }
 
 @media (max-width: 768px) {
+    .navbar {
+        padding: 20px 10px;
+    }
     .mobile-menu-toggle {
         display: block;
     }
