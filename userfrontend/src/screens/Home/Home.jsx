@@ -6,7 +6,7 @@ import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import {StoreContext} from '../../context/StoreContext'
 
-const Home = () => {
+const Home = ({ setShowFavoriteLogin }) => {
   const [category, setCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
   const [sortOption, setSortOption] = useState("default")
@@ -33,6 +33,14 @@ const Home = () => {
 
     // Sort the filtered items based on the selected option
     switch (sort) {
+      case "mostFavorited":
+        filtered.sort((a, b) => {
+          // Default to 0 if no_of_favorites is undefined
+          const aFavs = a.no_of_favorites || 0;
+          const bFavs = b.no_of_favorites || 0;
+          return bFavs - aFavs; // Sort in descending order (most to least)
+        });
+        break;
       case "lowToHigh":
         filtered.sort((a, b) => a.price - b.price)
         break
@@ -57,7 +65,11 @@ const Home = () => {
       <Header/>
       <ExploreMenu category={category} setCategory={setCategory}/>
       <SearchBar onSearch={handleSearch} />
-      <FoodDisplay category={category} customFoodList={filteredFoodList} />
+      <FoodDisplay 
+        category={category} 
+        customFoodList={filteredFoodList} 
+        setShowFavoriteLogin={setShowFavoriteLogin} 
+      />
     </div>
   )
 }

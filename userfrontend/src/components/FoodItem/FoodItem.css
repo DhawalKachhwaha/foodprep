@@ -26,7 +26,7 @@
   color:#676767;
 }
 
-.food-item-price-rating{
+.food-item-price-favorite{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,8 +40,41 @@
   margin: 10px 0;
 }
 
-.food-item-price-rating img{
-  width: 70px;
+.food-item-price-favorite img{
+  width: 25px;
+  cursor: pointer;
+}
+
+.favorite-icon {
+  transition: transform 0.2s ease;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.2);
+}
+
+.favorite-icon.processing {
+  opacity: 0.5;
+  cursor: not-allowed;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
+.favorite-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.favorite-count {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
 }
 
 .food-item-image-container{
@@ -74,6 +107,6 @@
 }
 
 .food-item-counter img{
-  width: 30px;;
+  width: 30px;
 }
 

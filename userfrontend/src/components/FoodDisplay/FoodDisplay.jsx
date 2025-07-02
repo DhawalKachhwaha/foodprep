@@ -3,7 +3,7 @@ import './FoodDisplay.css'
 import {StoreContext} from '../../context/StoreContext'
 import FoodItem from '../FoodItem/FoodItem'
 
-const FoodDisplay = ({category, customFoodList}) => {
+const FoodDisplay = ({category, customFoodList, setShowFavoriteLogin}) => {
   const {food_list} = useContext(StoreContext)
   
   // Use customFoodList if provided, otherwise filter the food_list based on category
@@ -26,6 +26,8 @@ const FoodDisplay = ({category, customFoodList}) => {
               image={item.image} 
               price={item.price} 
               description={item.description}
+              no_of_favorites={item.no_of_favorites || 0}
+              setShowFavoriteLogin={setShowFavoriteLogin}
             />
           ))}
         </div>

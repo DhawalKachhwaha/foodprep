@@ -6,7 +6,7 @@ import { StoreContext } from "../../context/StoreContext";
 import axios from 'axios'
 import {toast} from 'react-toastify'
 const LoginPopup = ({ setShowLogin }) => {
-  const {url,token,setToken} = useContext(StoreContext)
+  const {url, token, setToken, loadFavorites} = useContext(StoreContext)
   const [curState, setCurState] = useState("Log In");
   const [data, setData] = useState({
     name: "",
@@ -33,8 +33,11 @@ const LoginPopup = ({ setShowLogin }) => {
         setCurState("Log In")
       }
       else{
-        setToken(response.data.token)
-        localStorage.setItem("token",response.data.token)
+        const newToken = response.data.token;
+        setToken(newToken);
+        localStorage.setItem("token", newToken);
+        // Load user favorites right after login
+        await loadFavorites(newToken);
         setShowLogin(false)
       }
     } catch (error) {

@@ -18,6 +18,10 @@ const foodSchema = new mongoose.Schema(
             type:String,
             required:true
         },
+        no_of_favorites:{
+            type: Number,
+            default: 0
+        }
     }
 )
 const foodModel = mongoose.models.food || mongoose.model("Food",foodSchema)

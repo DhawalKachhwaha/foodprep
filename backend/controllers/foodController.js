@@ -12,6 +12,7 @@ const addFood = async(req,res)=>{
             price:req.body.price,
             category:req.body.category,
             image:image_filename,
+            no_of_favorites: 0
         })
         res.status(201).json({"message":"Food added Successfully"})
 
@@ -24,6 +25,7 @@ const addFood = async(req,res)=>{
 const listFood = async(req,res)=>{
     try {
         const foods = await foodModel.find({})
+                                    .select('_id name description price category image no_of_favorites')
         res.json({data:foods})
     } catch (error) {
         console.log(error)

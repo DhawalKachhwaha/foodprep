@@ -32,6 +32,7 @@ const SearchBar = ({ onSearch, onFilterChange }) => {
       <div className='filter-container'>
         <select value={sortOption} onChange={handleSortChange}>
           <option value="default">Sort By</option>
+          <option value="mostFavorited">Most Favorited</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
         </select>
